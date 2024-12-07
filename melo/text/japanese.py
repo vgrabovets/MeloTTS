@@ -548,7 +548,7 @@ conv = kakasi.getConverter()
 def text_normalize(text):
     res = unicodedata.normalize("NFKC", text)
     res = japanese_convert_numbers_to_words(res)
-    res = "".join([i for i in res if is_japanese_character(i)])
+    res = "".join([i for i in res if is_japanese_character(i) or i in punctuation])
     res = replace_punctuation(res)
     res = conv.do(res)
     return res
